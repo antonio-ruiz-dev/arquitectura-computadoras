@@ -1,0 +1,28 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity mux_switches is
+    port(
+        switchA    : in  std_logic;
+        switchB    : in  std_logic;
+        switchC    : in  std_logic;
+        output_val : out unsigned(7 downto 0)
+    );
+end entity;
+
+architecture behavioral of mux_switches is
+begin
+    process(switchA, switchB, switchC)
+    begin
+        if switchA = '1' then
+            output_val <= to_unsigned(10, 8);  -- 10 decimal
+        elsif switchB = '1' then
+            output_val <= to_unsigned(11, 8);  -- 11 decimal
+        elsif switchC = '1' then
+            output_val <= to_unsigned(12, 8);  -- 12 decimal
+        else
+            output_val <= to_unsigned(0, 8);   -- por defecto 0
+        end if;
+    end process;
+end architecture;

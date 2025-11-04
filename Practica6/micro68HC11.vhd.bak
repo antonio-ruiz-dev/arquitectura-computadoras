@@ -1,0 +1,180 @@
+ENTITY micro68HC11 IS
+    PORT (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        nIRQ : IN STD_LOGIC;
+        nXIRQ : IN STD_LOGIC;
+        Data_in : IN unsigned(7 DOWNTO 0);
+        Data_out : OUT unsigned(7 DOWNTO 0); -- Bus de datos de 8 bits
+        Dir : OUT unsigned(15 DOWNTO 0); -- Bis de direcciones de 16 bits
+        nRW : OUT STD_LOGIC := '1'; -- Señal para escribir en memoria
+        PC_low_out : OUT unsigned(7 DOWNTO 0);
+        e_presente_out : OUT unsigned(7 DOWNTO 0);
+        A_out : OUT unsigned (7 DOWNTO 0);
+        B_out : OUT unsigned (7 DOWNTO 0);
+        X_low_out : OUT unsigned(7 DOWNTO 0);
+        X_high_out : OUT unsigned(7 DOWNTO 0);
+        Y_low_out : OUT unsigned(7 DOWNTO 0);
+        flags : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) -- S X H I N Z V C
+    );
+END micro68HC11;
+ARCHITECTURE Behavioral OF micro68HC11 IS
+    SIGNAL e_presente : unsigned(11 DOWNTO 0) := X"000";
+    SIGNAL e_siguiente : unsigned(11 DOWNTO 0);
+    SIGNAL PC : unsigned (15 DOWNTO 0) := X"0014";
+    SIGNAL estados : STD_LOGIC_VECTOR (7 DOWNTO 0) := X"FF";
+    SIGNAL A : unsigned (7 DOWNTO 0);
+    SIGNAL B : unsigned (7 DOWNTO 0);
+    SIGNAL Q : unsigned (7 DOWNTO 0);
+    SIGNAL Yupa : unsigned (7 DOWNTO 0);
+    SIGNAL XH : unsigned (7 DOWNTO 0);
+    SIGNAL XL : unsigned (7 DOWNTO 0);
+    SIGNAL YH : unsigned (7 DOWNTO 0);
+    SIGNAL YL : unsigned (7 DOWNTO 0);
+    SIGNAL AuxH : unsigned (7 DOWNTO 0);
+    SIGNAL AuxL : unsigned (7 DOWNTO 0);
+    SIGNAL Aux : unsigned (15 DOWNTO 0);
+    SIGNAL PCH : unsigned (7 DOWNTO 0) := X"00";
+    SIGNAL PCL : unsigned (7 DOWNTO 0) := X"14";
+    SIGNAL SPH : unsigned (7 DOWNTO 0) := X"FF"; -- Definir en qué lugar poner el stack...
+    SIGNAL SPL : unsigned (7 DOWNTO 0) := X"FF"; -- de qué tamaño es la memoria y ponerlo
+    -- en la última dirección
+    SIGNAL microI : unsigned (11 DOWNTO 0) := X"333"; -- Direccion del driver de I := X""
+    SIGNAL microX : unsigned (11 DOWNTO 0) := X"444"; -- Direccion del driver de I := X""
+    SIGNAL IntRI : unsigned (15 DOWNTO 0);
+    SIGNAL IntRX : unsigned (15 DOWNTO 0);
+    SIGNAL IRQ : STD_LOGIC := '0';
+    SIGNAL XIRQ : STD_LOGIC := '0';
+    SIGNAL startMUL : STD_LOGIC := '0';
+    CONSTANT ZERO : unsigned (7 DOWNTO 0) := "00000000";
+    SIGNAL D : unsigned (15 DOWNTO 0);
+    SIGNAL varRW : STD_LOGIC := '1';
+    SIGNAL indY : STD_LOGIC := '0';
+BEGIN
+    PROCESS (clk, reset, e_presente, e_siguiente)
+    BEGIN
+        IF (reset = '0') THEN
+            e_siguiente <= X"000";
+            PC <= X"0014";
+            IRQ <= '0';
+            XIRQ <= '0';
+            indY <= '0';
+        ELSE
+            IF (rising_edge(clk)) THEN
+                CASE e_presente IS
+                    WHEN X"000" =>
+                        Dir <= PC;
+                        e_siguiente <= X"001";
+                    WHEN X"001" =>
+                        PC <= PC + 1;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"002" =>
+                        e_siguiente <= (Data_in & ZERO(3 DOWNTO 0));
+                        ---------------------------------------------------------------------------------------------------------------------
+                    WHEN X"860" => -- LDAA IMM
+                        Dir <= PC;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"861" => -- LDAA
+                        PC <= PC + 1;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"862" => -- LDAA
+                        A <= Data_in;
+                        -- Actualiza N
+                        estados(3) <= Data_in(7);
+                        -- Actualiza Z
+                        IF (Data_in = ZERO) THEN
+                            estados(2) <= '1';
+                        ELSE
+                            estados(2) <= '0';
+                        END IF;
+                        -- Actualiza V
+                        estados(1) <= '0';
+                        IF (XIRQ = '1') THEN
+                            e_siguiente <= microX;
+                        ELSE
+                            IF (IRQ = '1') THEN
+                                e_siguiente <= microI;
+                            ELSE
+                                Dir <= PC;
+                                e_siguiente <= X"001";
+                            END IF;
+                        END IF;
+                        ---------------------------------------------------------------------------------------------------------------------
+                    WHEN X"C60" => -- LDAB
+                        Dir <= PC;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"C61" => -- LDAB
+                        PC <= PC + 1;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"C62" => -- LDAB
+                        B <= Data_in;
+                        -- Actualiza N
+                        estados(3) <= Data_in(7);
+                        -- Actualiza Z
+                        IF (Data_in = ZERO) THEN
+                            estados(2) <= '1';
+                        ELSE
+                            estados(2) <= '0';
+                        END IF;
+                        -- Actualiza V
+                        estados(1) <= '0';
+                        IF (XIRQ = '1') THEN
+                            e_siguiente <= microX;
+                        ELSE
+                            IF (IRQ = '1') THEN
+                                e_siguiente <= microI;
+                            ELSE
+                                Dir <= PC;
+                                e_siguiente <= X"001";
+                            END IF;
+                        END IF;
+                        ---------------------------------------------------------------------------------------------------------------------
+                        -- Código de la instruccion de acceso relativo BNE
+                    WHEN X"260" =>
+                        Dir <= PC;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"261" =>
+                        PC <= PC + 1;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"262" =>
+                        IF (estados(2) = '0') THEN
+                            IF (Data_in(7) = '1') THEN
+                                PC <= PC - unsigned(NOT(Data_in - 1));
+                            ELSE
+                                PC <= PC + Data_in;
+                            END IF;
+                        END IF;
+                        e_siguiente <= e_presente + 1;
+                    WHEN X"263" =>
+                        IF (XIRQ = '1') THEN
+                            e_siguiente <= microX;
+                        ELSE
+                            IF (IRQ = '1') THEN
+                                e_siguiente <= microI;
+                            ELSE
+                                Dir <= PC;
+                                e_siguiente <= X"001";
+                            END IF;
+                        END IF;
+                        ---------------------------------------------------------------------------------------------------------------------
+                        -- .
+                        -- .
+                        -- .
+                        ---------------------------------------------------------------------------------------------------------------------
+                    WHEN OTHERS =>
+                        e_siguiente <= X"000";
+                        PC <= X"0000";
+                END CASE;
+            END IF;
+        END IF;
+        e_presente <= e_siguiente;
+        -- debug vals
+        A_out <= A;
+        B_out <= B;
+        e_presente_out <= e_presente(11 DOWNTO 4);
+        PC_low_out <= PC(7 DOWNTO 0);
+        X_low_out <= XL;
+        X_high_out <= XH;
+        Y_low_out <= YL;
+        flags <= estados;
+    END PROCESS;

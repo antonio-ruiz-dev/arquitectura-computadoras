@@ -1,0 +1,77 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'divider:inst1|cuenta[22]'
+Slack : -8.232
+TNS   : -1262.262
+
+Type  : Slow 1200mV 85C Model Setup 'noname'
+Slack : -2.280
+TNS   : -36.096
+
+Type  : Slow 1200mV 85C Model Hold 'divider:inst1|cuenta[22]'
+Slack : 0.356
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'noname'
+Slack : 0.555
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'noname'
+Slack : -3.000
+TNS   : -31.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'divider:inst1|cuenta[22]'
+Slack : -2.174
+TNS   : -667.544
+
+Type  : Slow 1200mV 0C Model Setup 'divider:inst1|cuenta[22]'
+Slack : -7.284
+TNS   : -1106.631
+
+Type  : Slow 1200mV 0C Model Setup 'noname'
+Slack : -1.880
+TNS   : -28.515
+
+Type  : Slow 1200mV 0C Model Hold 'divider:inst1|cuenta[22]'
+Slack : 0.311
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'noname'
+Slack : 0.498
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'noname'
+Slack : -3.000
+TNS   : -31.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'divider:inst1|cuenta[22]'
+Slack : -2.174
+TNS   : -667.544
+
+Type  : Fast 1200mV 0C Model Setup 'divider:inst1|cuenta[22]'
+Slack : -4.047
+TNS   : -588.898
+
+Type  : Fast 1200mV 0C Model Setup 'noname'
+Slack : -0.977
+TNS   : -9.353
+
+Type  : Fast 1200mV 0C Model Hold 'divider:inst1|cuenta[22]'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'noname'
+Slack : 0.295
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'noname'
+Slack : -3.000
+TNS   : -32.526
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'divider:inst1|cuenta[22]'
+Slack : -1.000
+TNS   : -367.000
+
+------------------------------------------------------------

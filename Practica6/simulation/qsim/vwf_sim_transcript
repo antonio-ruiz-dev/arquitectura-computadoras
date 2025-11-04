@@ -1,0 +1,85 @@
+Determining the location of the ModelSim executable...
+
+Using: /home/martin/intelFPGA/20.1/modelsim_ase/linuxaloem/
+
+To specify a ModelSim executable directory, select: Tools -> Options -> EDA Tool Options
+Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-Altera will be used.
+
+**** Generating the ModelSim Testbench ****
+
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Practica6 -c Practica6 --vector_source="/home/martin/Documents/arquitectura/practicas/Practica6/Waveform.vwf" --testbench_file="/home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim/Waveform.vwf.vht"
+
+Info (292036): Thank you for using the Quartus Prime software 30-day evaluation. You have 6 days remaining (until Nov 09, 2025) to use the Quartus Prime software with compilation and simulation support.Info: *******************************************************************Info: Running Quartus Prime EDA Netlist Writer    Info: Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition    Info: Copyright (C) 2020  Intel Corporation. All rights reserved.    Info: Your use of Intel Corporation's design tools, logic functions     Info: and other software and tools, and any partner logic     Info: functions, and any output files from any of the foregoing     Info: (including device programming or simulation files), and any     Info: associated documentation or information are expressly subject     Info: to the terms and conditions of the Intel Program License     Info: Subscription Agreement, the Intel Quartus Prime License Agreement,    Info: the Intel FPGA IP License Agreement, or other applicable license    Info: agreement, including, without limitation, that your use is for    Info: the sole purpose of programming logic devices manufactured by    Info: Intel and sold by Intel or its authorized distributors.  Please    Info: refer to the applicable agreement for further details, at    Info: https://fpgasoftware.intel.com/eula.    Info: Processing started: Mon Nov  3 13:52:28 2025Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Practica6 -c Practica6 --vector_source=/home/martin/Documents/arquitectura/practicas/Practica6/Waveform.vwf --testbench_file=/home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim/Waveform.vwf.vhtWarning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+file when writing test bench files
+out[14]" in vector source file when writing test bench files
+Completed successfully. 
+
+**** Generating the functional simulation netlist ****
+
+quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="/home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim/" Practica6 -c Practica6
+
+Info (292036): Thank you for using the Quartus Prime software 30-day evaluation. You have 6 days remaining (until Nov 09, 2025) to use the Quartus Prime software with compilation and simulation support.Info: *******************************************************************Info: Running Quartus Prime EDA Netlist Writer    Info: Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition    Info: Copyright (C) 2020  Intel Corporation. All rights reserved.    Info: Your use of Intel Corporation's design tools, logic functions     Info: and other software and tools, and any partner logic     Info: functions, and any output files from any of the foregoing     Info: (including device programming or simulation files), and any     Info: associated documentation or information are expressly subject     Info: to the terms and conditions of the Intel Program License     Info: Subscription Agreement, the Intel Quartus Prime License Agreement,    Info: the Intel FPGA IP License Agreement, or other applicable license    Info: agreement, including, without limitation, that your use is for    Info: the sole purpose of programming logic devices manufactured by    Info: Intel and sold by Intel or its authorized distributors.  Please    Info: refer to the applicable agreement for further details, at    Info: https://fpgasoftware.intel.com/eula.    Info: Processing started: Mon Nov  3 13:52:30 2025Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim/ Practica6 -c Practica6Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.Info (204019): Generated file Practica6.vho in folder "/home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim//" for EDA simulation toolInfo: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning    Info: Peak virtual memory: 604 megabytes    Info: Processing ended: Mon Nov  3 13:52:30 2025    Info: Elapsed time: 00:00:00    Info: Total CPU time (on all processors): 00:00:01
+Completed successfully. 
+
+**** Generating the ModelSim .do script ****
+
+/home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim/Practica6.do generated.
+
+Completed successfully. 
+
+**** Running the ModelSim simulation ****
+
+/home/martin/intelFPGA/20.1/modelsim_ase/linuxaloem//vsim -c -do Practica6.do
+
+Reading pref.tcl
+# 2020.1
+# do Practica6.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 13:52:31 on Nov 03,2025# vcom -work work Practica6.vho 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package VITAL_Timing
+# -- Loading package VITAL_Primitives
+# -- Loading package cycloneive_atom_pack# -- Loading package cycloneive_components
+# -- Compiling entity hard_block
+# -- Compiling architecture structure of hard_block
+# -- Loading package dffeas_pack
+# -- Loading package altera_primitives_components
+# -- Compiling entity Practica6# -- Compiling architecture structure of Practica6
+# End time: 13:52:31 on Nov 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 13:52:31 on Nov 03,2025# vcom -work work Waveform.vwf.vht 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164# -- Compiling entity Practica6_vhd_vec_tst
+# -- Compiling architecture Practica6_arch of Practica6_vhd_vec_tst
+# End time: 13:52:31 on Nov 03,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.Practica6_vhd_vec_tst # Start time: 13:52:31 on Nov 03,2025# Loading std.standard# Loading std.textio(body)# Loading ieee.std_logic_1164(body)# Loading work.practica6_vhd_vec_tst(practica6_arch)# Loading ieee.vital_timing(body)# Loading ieee.vital_primitives(body)# Loading altera.dffeas_pack# Loading altera.altera_primitives_components# Loading cycloneive.cycloneive_atom_pack(body)# Loading cycloneive.cycloneive_components# Loading work.practica6(structure)# Loading work.hard_block(structure)# Loading ieee.std_logic_arith(body)# Loading cycloneive.cycloneive_io_obuf(arch)# Loading cycloneive.cycloneive_io_ibuf(arch)# Loading cycloneive.cycloneive_clkctrl(vital_clkctrl)# Loading cycloneive.cycloneive_ena_reg(behave)# Loading cycloneive.cycloneive_lcell_comb(vital_lcell_comb)# Loading altera.dffeas(vital_dffeas)# Loading ieee.std_logic_unsigned(body)# Loading cycloneive.cycloneive_mac_mult(vital_cycloneive_mac_mult)# Loading cycloneive.cycloneive_mac_data_reg(vital_cycloneive_mac_data_reg)# Loading cycloneive.cycloneive_mac_sign_reg(cycloneive_mac_sign_reg)# Loading cycloneive.cycloneive_mac_mult_internal(vital_cycloneive_mac_mult_internal)# Loading cycloneive.cycloneive_mac_out(vital_cycloneive_mac_out)# Loading cycloneive.cycloneive_ram_block(block_arch)# Loading cycloneive.cycloneive_ram_register(reg_arch)# Loading cycloneive.cycloneive_ram_pulse_generator(pgen_arch)# ** Warning: Design size of 79083 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.# Expect performance to be adversely affected.
+# after#35
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).#    Time: 0 ps  Iteration: 0  Instance: /practica6_vhd_vec_tst/i1/\micro|Mult0|auto_generated|mac_mult1\/mac_multiply# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).#    Time: 0 ps  Iteration: 0  Instance: /practica6_vhd_vec_tst/i1/\micro|Mult0|auto_generated|mac_mult1\/mac_multiply# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).#    Time: 0 ps  Iteration: 2  Instance: /practica6_vhd_vec_tst/i1/\micro|Mult0|auto_generated|mac_mult1\/mac_multiply# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).#    Time: 0 ps  Iteration: 2  Instance: /practica6_vhd_vec_tst/i1/\micro|Mult0|auto_generated|mac_mult1\/mac_multiply# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).#    Time: 0 ps  Iteration: 4  Instance: /practica6_vhd_vec_tst/i1/\micro|Mult0|auto_generated|mac_mult1\/mac_multiply# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).#    Time: 0 ps  Iteration: 4  Instance: /practica6_vhd_vec_tst/i1/\micro|Mult0|auto_generated|mac_mult1\/mac_multiply
+# Simulation time: 55000 ps
+# Simulation time: 55000 ps
+# End time: 13:52:38 on Nov 03,2025, Elapsed time: 0:00:07# Errors: 0, Warnings: 7
+Completed successfully. 
+
+**** Converting ModelSim VCD to vector waveform ****
+
+Reading /home/martin/Documents/arquitectura/practicas/Practica6/Waveform.vwf...
+
+Reading /home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim/Practica6.msim.vcd...
+
+Processing channel transitions... 
+
+Warning: clk - signal not found in VCD.
+
+Writing the resulting VWF to /home/martin/Documents/arquitectura/practicas/Practica6/simulation/qsim/Practica6_20251103135238.sim.vwf
+
+Finished VCD to VWF conversion.
+
+Completed successfully. 
+
+All completed.

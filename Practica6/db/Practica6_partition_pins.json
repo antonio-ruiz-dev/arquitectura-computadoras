@@ -1,0 +1,417 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "RW",
+					"strict" : false
+				},
+				{
+					"name" : "A[7]",
+					"strict" : false
+				},
+				{
+					"name" : "A[6]",
+					"strict" : false
+				},
+				{
+					"name" : "A[5]",
+					"strict" : false
+				},
+				{
+					"name" : "A[4]",
+					"strict" : false
+				},
+				{
+					"name" : "A[3]",
+					"strict" : false
+				},
+				{
+					"name" : "A[2]",
+					"strict" : false
+				},
+				{
+					"name" : "A[1]",
+					"strict" : false
+				},
+				{
+					"name" : "A[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[15]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[14]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[13]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[12]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[11]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[10]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[9]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[8]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Addr_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "B[7]",
+					"strict" : false
+				},
+				{
+					"name" : "B[6]",
+					"strict" : false
+				},
+				{
+					"name" : "B[5]",
+					"strict" : false
+				},
+				{
+					"name" : "B[4]",
+					"strict" : false
+				},
+				{
+					"name" : "B[3]",
+					"strict" : false
+				},
+				{
+					"name" : "B[2]",
+					"strict" : false
+				},
+				{
+					"name" : "B[1]",
+					"strict" : false
+				},
+				{
+					"name" : "B[0]",
+					"strict" : false
+				},
+				{
+					"name" : "constAdrr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "constAdrr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "constAdrr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[7]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[6]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[5]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[4]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[3]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[2]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DataOut[0]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[7]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[6]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[5]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[4]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[3]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[2]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[1]",
+					"strict" : false
+				},
+				{
+					"name" : "e_presente[0]",
+					"strict" : false
+				},
+				{
+					"name" : "flags[3]",
+					"strict" : false
+				},
+				{
+					"name" : "flags[2]",
+					"strict" : false
+				},
+				{
+					"name" : "flags[1]",
+					"strict" : false
+				},
+				{
+					"name" : "flags[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[7]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[6]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[5]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[4]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[3]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mem[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[7]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[6]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[5]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[4]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[3]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[2]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[1]",
+					"strict" : false
+				},
+				{
+					"name" : "PC[0]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[7]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[6]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[5]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[4]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[3]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[2]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[1]",
+					"strict" : false
+				},
+				{
+					"name" : "X_high[0]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[7]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[6]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[5]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[4]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[3]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[2]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[1]",
+					"strict" : false
+				},
+				{
+					"name" : "X_low[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dipC",
+					"strict" : false
+				},
+				{
+					"name" : "dipA",
+					"strict" : false
+				},
+				{
+					"name" : "dipB",
+					"strict" : false
+				},
+				{
+					"name" : "noname",
+					"strict" : false
+				},
+				{
+					"name" : "IRQ",
+					"strict" : false
+				},
+				{
+					"name" : "XIRQ",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
